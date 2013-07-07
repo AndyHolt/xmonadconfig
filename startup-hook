@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# xmonad startup-hook script - gets run after xmonad is initialized via
+#   startupHook facility in xmonad.
+# Runs programs which want to use in xmonad byt don't need to be initialized
+#   before xmonad is running.
+#
+# By Andy Holt
+# Based on config by David Brewer
+# (https://github.com/davidbrewer/xmonad-ubuntu-conf)
+
+#
+# TRAY ICON SOFTWARE
+# 
+
+# Network manager, so we don't have to configure wifi at the command
+# line.
+#if [ -x /usr/bin/nm-applet ] ; then
+#    nm-applet --sm-disable &
+#fi
+
+if [ -x /usr/bin/dropbox ] ; then
+    dropbox start &
+fi
+
+if [ -x /usr/bin/autokey ] ; then
+    autokey &
+fi
+
+#
+# other changes and applications
+# 
+
+# swap ctrl and caps lock
+xmodmap ~/.xmonad/xmodmap
