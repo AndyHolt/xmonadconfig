@@ -122,7 +122,7 @@ myKeyBindings =
   , ((0, 0x1008ff11), spawn "amixer -q set Master 5%-")
   , ((0, 0x1008ff13), spawn "amixer -q set Master 5%+")
   , ((mod4Mask, xK_w), spawn "gnome-screensaver-command -l")
-  , ((mod4Mask, xK_c), spawn "emacsclient -c -e '(org-capture)'") 
+  , ((mod4Mask, xK_c), spawn "emacsclient -c -a='' -e '(org-capture)'") 
     ]
 
 {-
