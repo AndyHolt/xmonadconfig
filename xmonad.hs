@@ -179,8 +179,8 @@ myKeys = myKeyBindings ++
   ]
 
 main = do
-  xmproc <- spawnPipe "/usr/bin/xmobar /home/adh/.xmobarrc"
-  xmonad $ withUrgencyHook NoUrgencyHook $ defaultConfig
+  xmproc <- spawnPipe "/usr/bin/xmobar /home/adh/.xmonad/xmobarrc"
+  xmonad $ defaultConfig
     { focusedBorderColor = myFocusedBorderColor
     , normalBorderColor = myNormalBorderColor
     , borderWidth = myBorderWidth
@@ -190,7 +190,7 @@ main = do
     , manageHook = manageHook defaultConfig
                    <+> composeAll myManagementHooks
                    <+> manageDocks
-    , layoutHook = myLayouts
+    , layoutHook = defaultLayouts
     , handleEventHook = fullscreenEventHook
     , logHook = dynamicLogWithPP $ xmobarPP
             { ppOutput = hPutStrLn xmproc
@@ -203,7 +203,7 @@ main = do
                           . wrap myUrgentWSLeft myUrgentWSRight
             }
     , startupHook = do
-        windows $ W.greedyView starupWorkspace
+        windows $ W.greedyView startupWorkspace
         spawn "~/.xmonad/startup-hook"
     }
       `additionalKeys` myKeys

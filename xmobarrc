@@ -1,0 +1,36 @@
+-- xmobar config file
+--
+-- configures aspects of the status bar which aren't directly controlled by xmonad.
+
+Config { font = "xft:Ubuntu Mono-9",
+       , bgColor = "black"
+       , fgColor = "grey"
+
+  -- set position to top left. Leave 10% of screen for trayer.
+       , position = TopW L 90
+
+  -- list of commmands which gather info about the system and present it in the bar.
+       , commands = [
+         --Run Weather "EGPD" ["-t"," <tempF>F","-L","64","-H","77","--normal","--high","red","--low","lightblue"] 36000
+           Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+         , Run Memory ["-t","Mem: <usedratio>%"] 10
+         , Run Swap [] 10
+         , Run Date "%a %b %_d %l:%M" "date" 10
+         , Run Battery [
+           "-t", "<acstatus>: <left>%",
+           "--",
+           "-c", "charge_full",
+           "-O", "AC",
+           "-o", "Bat",
+           "-h", "green",
+           "-l", "red"
+           ] 10
+         , Run Com "~/.xmonad/get-volume" [] "myvolumne" 10
+         , Run StdinReader
+         ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %battery% | %cpu% | %memory% * %swap% <fc=#e6744c>%date%</fc>   "
+         }
+
+-- #ee9a00
