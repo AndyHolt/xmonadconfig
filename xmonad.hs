@@ -125,10 +125,15 @@ myKeyBindings =
   , ((mod4Mask, xK_c), spawn "emacsclient -c -e '(org-capture)'") 
     ]
 
+{-
+  Management hooks. Enforce certain behaviours to certain programs or
+  windows.
+-}
 
-myManageHook = composeAll
-  [ className =? "Gimp"      --> doFloat
-  , className =? "Vncviewer" --> doFloat
+myManagementHooks :: [ManageHook]
+myManagementHooks = [
+    resource =? "synapse" --> doIgnore
+  , className =? "Gimp"   --> doFloat
   ]
 
 main = do
@@ -140,7 +145,9 @@ main = do
     , terminal = myTerminal
     , modMask = myModMask
     , workspaces = myWorkspaces
-    , manageHook = manageDocks <+> myManageHook <+> manageHook defaultConfig
+    , manageHook = manageHook defaultConfig
+                   <+> composeAll myManagementHooks
+                   <+> manageDocks
     , layoutHook = avoidStruts  $  layoutHook defaultConfig
     , logHook = dynamicLogWithPP $ xmobarPP
             { ppOutput = hPutStrLn xmproc
