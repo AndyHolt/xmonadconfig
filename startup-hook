@@ -33,3 +33,7 @@ fi
 
 # swap ctrl and caps lock
 xmodmap ~/.xmonad/xmodmap
+
+if [ -x /usr/bin/synapse ] ; then
+    synapse -s &
+fi
