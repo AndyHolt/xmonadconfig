@@ -43,12 +43,26 @@ myVisibleWSLeft  = ")"
 myUrgentWSLeft   = "{"        -- wrap urgent workspace with these
 myUrgentWSRight  = "}"
 
+{-
+  Workspace configuration.
+
+  Set names of workspaces etc.
+-}
+
+myWorkspaces =
+  [
+    "7:Chat",   "8",        "9",
+    "4:Music",  "5:Emacs",  "6",
+    "1:Term",   "2:Mail",   "3:Web",
+    "0:VM",     "Extr1",    "Extr2"
+  ]
+
+startupWorkspace = "1:Term"  -- this is where to start after launch
+
 myManageHook = composeAll
   [ className =? "Gimp"      --> doFloat
   , className =? "Vncviewer" --> doFloat
   ]
-
-myWorkspaces = ["1:mail","2:web","3:music","4:emacs","5","6","7","8","9"]
 
 main = do
   xmproc <- spawnPipe "/usr/bin/xmobar /home/adh/.xmobarrc"
