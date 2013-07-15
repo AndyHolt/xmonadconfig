@@ -134,6 +134,7 @@ myManagementHooks :: [ManageHook]
 myManagementHooks = [
     resource =? "synapse" --> doIgnore
   , className =? "Gimp"   --> doFloat
+  , className =? "Dialog" --> doIgnore
   ]
 
 {-
@@ -203,6 +204,7 @@ main = do
                           . wrap myUrgentWSLeft myUrgentWSRight
             }
     , startupHook = do
+        setWMName "LG3D"              -- should make Java GUIs work properly.
         windows $ W.greedyView startupWorkspace
         spawn "~/.xmonad/startup-hook"
     }
