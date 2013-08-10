@@ -101,15 +101,15 @@ defaultLayouts = smartBorders(avoidStruts(
   -- Grid layout tried to equally distribute windows in the availiable space,
   -- increasing the number of columns and rows as necessary.
   -- Master window is at top left.
-  ||| Grid
+  ||| Grid))
 
   -- ThreeColMid layout puts the large master window in the center of the
   -- screen. As configured, by default it takes up 3/4 of the availiable space.
-  ||| ThreeColMid 1 (3/100) (3/4)
+  -- ||| ThreeColMid 1 (3/100) (3/4)
 
   -- Circle layout places the master window in the centre of the screen.
   -- Remaining windows appear in a circle around it
-  ||| Circle))
+  -- ||| Circle))
 
 myKeyBindings =
   [
@@ -122,7 +122,7 @@ myKeyBindings =
   , ((0, 0x1008ff11), spawn "amixer -q set Master 5%-")
   , ((0, 0x1008ff13), spawn "amixer -q set Master 5%+")
   , ((mod4Mask, xK_w), spawn "gnome-screensaver-command -l")
-  , ((mod4Mask, xK_c), spawn "emacsclient -c -a='' -e '(org-capture)'") 
+  , ((mod4Mask, xK_c), spawn "emacsclient -c -a='' -e '(org-capture)'")
     ]
 
 {-
@@ -139,7 +139,7 @@ myManagementHooks = [
 
 {-
   Workspace navigation keybindings. Copied straight from David
-  Brewer's config. Beware messing with this! 
+  Brewer's config. Beware messing with this!
 -}
 
 numPadKeys =
