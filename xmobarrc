@@ -19,7 +19,7 @@ Config { font = "xft:Ubuntu Mono-9",
          , Run Battery [
            "-t", "<acstatus>: <left>%",
            "--",
-           "-c", "charge_full",
+           --"-c", "charge_full",
            "-O", "AC",
            "-o", "Bat",
            "-h", "green",
