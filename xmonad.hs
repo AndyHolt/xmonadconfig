@@ -115,7 +115,7 @@ myKeyBindings =
   [
     ((myModMask, xK_f), sendMessage ToggleStruts)
   , ((myModMask, xK_a), sendMessage MirrorShrink)
-  , ((myModMask, xK_z), sendMessage MirrorShrink)
+  , ((myModMask, xK_z), sendMessage MirrorExpand)
   , ((myModMask, xK_s), spawn "synapse")
 --  , ((myModMask, xK_u), focusUrgent)
   , ((0, 0x1008ff12), spawn "amixer -D pulse set Master toggle")
@@ -133,7 +133,8 @@ myKeyBindings =
 myManagementHooks :: [ManageHook]
 myManagementHooks = [
     resource =? "synapse" --> doIgnore
-  , className =? "Gimp"   --> doFloat
+  , className =? "synapse" --> doIgnore
+  , className =? "Gimp-2.8"   --> doFloat
   , className =? "Dialog" --> doIgnore
   ]
 

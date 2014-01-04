@@ -2,7 +2,7 @@
 --
 -- configures aspects of the status bar which aren't directly controlled by xmonad.
 
-Config { font = "xft:Ubuntu Mono-9",
+Config { font = "xft:Gentium Book Basic-9",
        , bgColor = "black"
        , fgColor = "grey"
 
@@ -30,7 +30,7 @@ Config { font = "xft:Ubuntu Mono-9",
          ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %battery% | %cpu% | %memory% * %swap% <fc=#e6744c>%date%</fc>   "
+       , template = "%StdinReader% }{ %battery%  |  %cpu%  |  %memory%  :  %swap%  <fc=#e6744c>%date%</fc>   "
          }
 
 -- #ee9a00
