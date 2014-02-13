@@ -12,6 +12,7 @@ import XMonad
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Grid
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.ThreeColumns
@@ -182,7 +183,8 @@ myKeys = myKeyBindings ++
 
 main = do
   xmproc <- spawnPipe "/usr/bin/xmobar /home/adh/.xmonad/xmobarrc"
-  xmonad $ defaultConfig
+  xmonad $ withUrgencyHook NoUrgencyHook
+    $ defaultConfig
     { focusedBorderColor = myFocusedBorderColor
     , normalBorderColor = myNormalBorderColor
     , borderWidth = myBorderWidth
