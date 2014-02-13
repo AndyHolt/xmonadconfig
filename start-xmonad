@@ -4,13 +4,13 @@
 # run xmonad and some associated programs
 #
 # by Andy Holt
-# 
+#
 # based on config of David Brewer
 # (https://github.com/davidbrewer/xmonad-ubuntu-conf)
 
 #
 # GENERAL INITIALISATION
-# 
+#
 
 # Load X resources (fixes some font issues)
 xrdb -merge .Xresources
@@ -34,12 +34,6 @@ xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto \
 # primary
 xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS
 
-#
-# LOAD SCREEN BACKGROUNDS
-#
-
-#xpmroot ~/Pictures/Romans_SaturnMoon2bg.png
-nitrogen --restore &
 
 #
 # STARTUP ICON TRAY
@@ -55,8 +49,15 @@ trayer \
     --width 10 \
     --transparent true \
     --tint 0x0c0a0b \
-    --height 17 \
+    --height 20 \
     &
+
+#
+# LOAD SCREEN BACKGROUNDS
+#
+
+#xpmroot ~/Pictures/Romans_SaturnMoon2bg.png
+nitrogen --restore &
 
 # run gnome-keyring-daemon to avoid issues might otherwise encounter when using
 # gnome applications which expect access to keyring. Prevents prompts might
