@@ -11,7 +11,7 @@
 
 #
 # TRAY ICON SOFTWARE
-# 
+#
 
 # Network manager, so we don't have to configure wifi at the command
 # line.
@@ -29,7 +29,7 @@ fi
 
 #
 # other changes and applications
-# 
+#
 
 # swap ctrl and caps lock
 xmodmap ~/.xmonad/xmodmap
@@ -37,3 +37,17 @@ xmodmap ~/.xmonad/xmodmap
 if [ -x /usr/bin/synapse ] ; then
     synapse -s &
 fi
+
+# start diodon clipboard manager (sith sys tray applet in trayer)
+if [ -x /usr/bin/diodon ] ; then
+    diodon &
+fi
+
+# start xflux with cambridge as default location
+# cambridge:  52.2 0.13
+# aberdeen:   57.3 -2.2
+if [ -x ~/xflux ] ; then
+    ~/xflux -l 52.2 -g 0.1 &
+fi
+
+nitrogen --restore &
