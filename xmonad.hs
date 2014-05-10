@@ -137,7 +137,12 @@ myManagementHooks = [
   , className =? "synapse" --> doIgnore
   , className =? "Gimp-2.8"   --> doFloat
   , className =? "Dialog" --> doIgnore
+  -- Google Hangouts dialogues to float
+  , (className =? "Chromium-browser" <&&> role =? "pop-up") --> doFloat
+  -- [todo] - set up other windows for floating default
+  -- , className =? "Calendar" --> doFloat
   ]
+  where role = stringProperty "WM_WINDOW_ROLE"
 
 {-
   Workspace navigation keybindings. Copied straight from David
