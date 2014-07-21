@@ -42,14 +42,15 @@ xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS
 # use trayer to create an icon tray at top right of screen
 trayer \
     --edge top \
-    -- align right \
+    --align right \
     --SetDockType true \
     --SetPartialStrut true \
     --expand true \
     --width 10 \
     --transparent true \
-    --tint 0x0c0a0b \
-    --height 20 \
+    --alpha 0 \
+    --tint 0xc0bebf \
+    --height 22 \
     &
 
 #
