@@ -47,7 +47,7 @@ fi
 # cambridge:  52.2 0.13
 # aberdeen:   57.3 -2.2
 if [ -x ~/xflux ] ; then
-    ~/xflux -l 52.2 -g 0.1 &
+    ~/xflux -l 52.2 -g 0.13 &
 fi
 
 nitrogen --restore &
