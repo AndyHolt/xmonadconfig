@@ -2,9 +2,9 @@
 --
 -- configures aspects of the status bar which aren't directly controlled by xmonad.
 
-Config { font = "xft:Gentium Book Basic-9",
-       , bgColor = "black"
-       , fgColor = "grey"
+Config { font = "xft:Gentium Book Basic-11",
+       , bgColor = "grey"
+       , fgColor = "black"
 
   -- set position to top left. Leave 10% of screen for trayer.
        , position = TopW L 90
@@ -12,7 +12,7 @@ Config { font = "xft:Gentium Book Basic-9",
   -- list of commmands which gather info about the system and present it in the bar.
        , commands = [
          --Run Weather "EGPD" ["-t"," <tempF>F","-L","64","-H","77","--normal","--high","red","--low","lightblue"] 36000
-           Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+           Run Cpu ["-L","3","-H","50"] 10
          , Run Memory ["-t","Mem: <usedratio>%"] 10
          , Run Swap [] 10
          , Run Date "%a %b %_d %l:%M" "date" 10
@@ -30,7 +30,7 @@ Config { font = "xft:Gentium Book Basic-9",
          ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %battery%  |  %cpu%  |  %memory%  :  %swap%  <fc=#e6744c>%date%</fc>   "
+       , template = "   %StdinReader% }{ %battery%  %cpu%  %memory%  %swap%        %date%   "
          }
 
 -- #ee9a00

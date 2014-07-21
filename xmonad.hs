@@ -15,18 +15,18 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import XMonad.Layout.Grid
 import XMonad.Layout.ResizableTile
-import XMonad.Layout.ThreeColumns
+-- import XMonad.Layout.ThreeColumns
 import XMonad.Layout.NoBorders
-import XMonad.Layout.Circle
-import XMonad.Layout.PerWorkspace (onWorkspace)
+-- import XMonad.Layout.Circle
+-- import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Fullscreen
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
 import XMonad.Actions.Plane
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
-import Data.Ratio ((%))
-import System.IO
+--import Data.Ratio ((%))
+-- import System.IO
 
 {-
   Xmonad config variables
@@ -44,17 +44,17 @@ myTerminal           = "terminator" -- use terminator as default terminal
   file.
 -}
 
-myTitleColor     = "#eeeeee"  -- color of window title light grey
+myTitleColor     = "black"  -- color of window title light grey
 myTitleLength    = 80         -- truncate window title to this length
-myCurrentWSColor = "#e6744c"  -- color of active workspace
-myVisibleWSColor = "#c185a7"  -- color of inactive workspace
+myCurrentWSColor = "#ee4000"  -- color of active workspace
+myVisibleWSColor = "black"  -- color of inactive workspace
 myUrgentWSColor  = "#cc0000"  -- color of workspace with 'urgent' window
-myCurrentWSLeft  = "["        -- wrap current workspace with these
-myCurrentWSRight = "]"
-myVisibleWSRight = "("        -- wrap inactive workspace with these
-myVisibleWSLeft  = ")"
-myUrgentWSLeft   = "{"        -- wrap urgent workspace with these
-myUrgentWSRight  = "}"
+-- myCurrentWSLeft  = "["        -- wrap current workspace with these
+-- myCurrentWSRight = "]"
+-- myVisibleWSRight = "("        -- wrap inactive workspace with these
+-- myVisibleWSLeft  = ")"
+-- myUrgentWSLeft   = "{"        -- wrap urgent workspace with these
+-- myUrgentWSRight  = "}"
 
 {-
   Workspace configuration.
@@ -64,10 +64,10 @@ myUrgentWSRight  = "}"
 
 myWorkspaces =
   [
-    "7:Chat",   "8",        "9",
-    "4:Music",  "5:Emacs",  "6",
+    "7:Chat",   "8:Img",    "9:Docs",
+    "4:Music",  "5:Emacs",  "6:Proj",
     "1:Term",   "2:Mail",   "3:Web",
-    "0:VM",     "Extr1",    "Extr2"
+    "0:Extr0",  "Extr1",    "Extr2"
   ]
 
 startupWorkspace = "1:Term"  -- this is where to start after launch
@@ -140,7 +140,7 @@ myManagementHooks = [
   -- Google Hangouts dialogues to float
   , (className =? "Chromium-browser" <&&> role =? "pop-up") --> doFloat
   -- [todo] - set up other windows for floating default
-  -- , className =? "Calendar" --> doFloat
+  , (className =? "Thunderbird" <&&> role =? "AlarmWindow") --> doFloat
   ]
   where role = stringProperty "WM_WINDOW_ROLE"
 
@@ -205,11 +205,11 @@ main = do
             { ppOutput = hPutStrLn xmproc
             , ppTitle = xmobarColor myTitleColor "" . shorten myTitleLength
             , ppCurrent = xmobarColor myCurrentWSColor ""
-                          . wrap myCurrentWSLeft myCurrentWSRight
+                          -- . wrap myCurrentWSLeft myCurrentWSRight
             , ppVisible = xmobarColor myVisibleWSColor ""
-                          . wrap myVisibleWSLeft myVisibleWSRight
+                          -- . wrap myVisibleWSLeft myVisibleWSRight
             , ppUrgent = xmobarColor myUrgentWSColor ""
-                          . wrap myUrgentWSLeft myUrgentWSRight
+                          -- . wrap myUrgentWSLeft myUrgentWSRight
             }
     , startupHook = do
         setWMName "LG3D"              -- should make Java GUIs work properly.
